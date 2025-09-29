@@ -1,79 +1,19 @@
-function fetchWeatherDataBucharest() {
-  fetch(
-    "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Bucharest?unitGroup=us&key=UWYE9TZNLDLF2G4FMR7PPBCU4&contentType=json",
-    {
-      method: "GET",
-      headers: {},
-    }
-  )
-    .then((response) => {
-      return response.json();
-    })
-    .then((response) => {
-      console.log(response);
-      return response;
-    })
-    .catch((err) => {
-      console.error(err);
-    });
-}
+const apiKey = "UWYE9TZNLDLF2G4FMR7PPBCU4";
 
-function fetchWeatherDataParis() {
-  fetch(
-    "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Paris?unitGroup=us&key=UWYE9TZNLDLF2G4FMR7PPBCU4&contentType=json",
-    {
-      method: "GET",
-      headers: {},
-    }
+async function fetchWeatherLocation(location) {
+    const url = fetch(
+    `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?key=${apiKey}=json&unitGroup=metric`
   )
-    .then((response) => {
-      return response.json();
-    })
-    .then((response) => {
-      console.log(response);
-      return response;
-    })
-    .catch((err) => {
-      console.error(err);
-    });
-}
-
-function fetchWeatherDataNewYork() {
-  fetch(
-    "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/New%20York?unitGroup=us&key=UWYE9TZNLDLF2G4FMR7PPBCU4&contentType=json",
-    {
-      method: "GET",
-      headers: {},
-    }
-  )
-    .then((response) => {
-      return response.json();
-    })
-    .then((response) => {
-      console.log(response);
-      return response;
-    })
-    .catch((err) => {
-      console.error(err);
-    });
-}
-
-fetchWeatherDataBucharest();
-fetchWeatherDataParis();
-fetchWeatherDataNewYork();
+    const response = await fetch(url);
+    if (!response.ok) throw new Error("Network response was not ok");
+    return await response.json();
+} 
 
 async function getRelevantInfo(cityName) {
-    let data = '';
-    switch(cityName) {
-        case 'Bucharest':
-            data = fetchWeatherDataBucharest();
-            break;
-        case 'Paris':
-            data = fetchWeatherDataParis();
-            break;
-        case 'New York':
-            data = fetchWeatherDataNewYork();
-            break;
-    }
+    try {
+        const data =  await fetchWeatherLocation(cityName);
     
+    } catch (error) {
+        console.error(error);
+    }
 }
