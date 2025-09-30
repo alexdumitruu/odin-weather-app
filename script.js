@@ -89,6 +89,6 @@ btn.addEventListener("click", async () => {
     weatherResult.textContent =
       "Error fetching weather. Check console for details.";
   } else {
-    renderWeatherData(dataObj);
+    setTimeout(() => renderWeatherData(dataObj), 1250);
   }
 });
