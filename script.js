@@ -82,6 +82,7 @@ btn.addEventListener("click", async () => {
     weatherResult.textContent = "Please enter a city.";
     return;
   }
+  weatherResult.classList.remove('hidden');
   weatherResult.textContent = "Loading…";
   const dataObj = await getRelevantInfo(location);
   if (!dataObj) {

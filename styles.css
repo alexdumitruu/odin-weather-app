@@ -15,6 +15,10 @@ body {
   color: #fff;
 }
 
+.hidden {
+  display: none;
+}
+
 div:first-of-type {
   display: flex;
   gap: 0.5rem;
@@ -53,6 +57,7 @@ div:first-of-type {
   text-align: center;
   width: 320px;
   max-width: 90%;
+  color: black;
 }
 
 #weatherResult h2 {
@@ -70,7 +75,7 @@ div:first-of-type {
   margin: 1.2rem 0;
   padding: 1rem;
   border-radius: 0.8rem;
-  background: #8e9edc;
+  background: #b3bde7;
 }
 
 .current-weather h3 {
@@ -94,7 +99,7 @@ div:first-of-type {
 }
 
 .forecast li {
-  background: #8e9edc;
+  background: #b3bde7;
   margin: 0.4rem 0;
   padding: 0.6rem;
   border-radius: 0.6rem;
